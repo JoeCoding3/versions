@@ -1,0 +1,22 @@
+<!doctype html>
+<title>Project Versions</title>
+<style>
+	body {
+		background-color: black;
+		color: lightgray;
+	}
+</style>
+
+<div id="versionDiv"></div>
+
+<script>
+	async function init () {
+		let resp = await fetch("./versions.json")
+		let json = await resp.json()
+		for (let name of Object.keys(json)) {
+			let ver = json[name]
+			versionDiv.innerText += `${name}: ${ver}\n`
+		}
+	}
+	onload = init
+</script>
